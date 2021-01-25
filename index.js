@@ -1,26 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function getTime() {
-    return (new Date()).toLocaleTimeString()
-}
+
+import CommentDetail from './CommentDetail';
+import ApprovalCard from './ApprovalCard';
 
 const App = () => {
-    return (
-    <div> 
-  
-    <label className = "label" htmlFor = "name"> Enter name </label>
-    <input  id = "name" type ="text" />
-    <button style = {{backgroundColor:'red', color: 'white'}}> submit </button>
+  return (
+    <div className="ui container comments">
+      <ApprovalCard>
+        <div>
+          <h4>Warning!</h4>
+          Are you sure you want to do this?
+        </div>
+      </ApprovalCard>
 
-    <h2>{getTime()}</h2>
-  
-  </div>
+      <ApprovalCard>
+        <CommentDetail
+          author="Sam"
+          timeAgo="Today at 4:45PM"
+          content="Nice blog post"
+          avatar
+        />
+      </ApprovalCard>
 
-    );
+      <ApprovalCard>
+        <CommentDetail
+          author="Alex"
+          timeAgo="Today at 2:00AM"
+          content="I like the subject"
+          avatar
+        />
+      </ApprovalCard>
 
-
+      <ApprovalCard>
+        <CommentDetail
+          author="Jane"
+          timeAgo="Yesterday at 5:00PM"
+          content="I like the writing"
+          avatar
+        />
+      </ApprovalCard>
+    </div>
+  );
 };
 
-
-ReactDOM.render( <App />, document.querySelector('#root'));
+ReactDOM.render(<App />, document.querySelector('#root'));
